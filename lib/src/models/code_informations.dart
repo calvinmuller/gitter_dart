@@ -5,7 +5,7 @@ import 'package:gitter/src/oauth/oauth.dart';
 class GitterCodeInformations extends CodeInformations {
   GitterCodeInformations(AppInformations appInformations, {bool force: false})
       : super(
-          appInformations.tokenUrl,
+          "${appInformations.tokenUrl}/oauth/authorize",
           {
             "client_id": appInformations.appId,
             "response_type": "code",
