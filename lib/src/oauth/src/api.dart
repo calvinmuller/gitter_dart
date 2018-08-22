@@ -22,13 +22,13 @@ abstract class OAuth {
       http.Response response;
       if (tokenInformations.isPost) {
         response = await http.post("${tokenInformations.url}",
-            body: JSON.encode(tokenInformations.params),
+            body: json.encode(tokenInformations.params),
             headers: tokenInformations.headers);
       } else {
         response = await http.get("${tokenInformations.url}?${mapToQueryParams(
             tokenInformations.params)}");
       }
-      token = JSON.decode(response.body);
+      token = json.decode(response.body);
     }
     return token;
   }
