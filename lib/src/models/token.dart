@@ -11,7 +11,7 @@ class GitterToken implements Token {
 
   GitterToken();
 
-  factory GitterToken.fromJson(Map<String, String> json) =>
+  factory GitterToken.fromJson(Map<String, dynamic> json) =>
       GitterToken.fromMap(json);
 
   Map toMap() => GitterToken.toJsonMap(this);
