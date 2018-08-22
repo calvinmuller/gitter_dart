@@ -1,6 +1,6 @@
 library gitter;
 
-export 'src/api.dart';
+//export 'src/api.dart';
 export 'src/oauth.dart';
 
 export 'src/models/code_informations.dart';
