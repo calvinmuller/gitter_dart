@@ -99,7 +99,7 @@ class UserApi {
   Future<Room> userJoinRoom(String userId, String roomId) async {
     final data = {"id": roomId};
     final http.Response response = await http.post("$_baseUrl/$userId/rooms",
-        body: JSON.encode(data), headers: _getHeaders(_token));
+        body: json.encode(data), headers: _getHeaders(_token));
     final json = _getResponseBody(response);
     return new Room.fromJson(json);
   }
@@ -143,7 +143,7 @@ class RoomApi {
     final Map<String, String> json = {"text": message};
     final http.Response response = await http.post(
       "$_baseUrl/$id/chatMessages",
-      body: JSON.encode(json),
+      body: json.encode(json),
       headers: _getHeaders(token),
     );
     return new Message.fromJson(_getResponseBody(response));
@@ -154,7 +154,7 @@ class RoomApi {
     final Map<String, String> json = {"uri": uri};
     final http.Response response = await http.post(
       "$_baseUrl",
-      body: JSON.encode(json),
+      body: json.encode(json),
       headers: _getHeaders(token),
     );
     final room = new Room.fromJson(_getResponseBody(response));
@@ -185,7 +185,7 @@ class RoomApi {
         .map((Iterable<int> data) =>
             (new String.fromCharCodes(data)).replaceAll("\r", ""))
         .where((String json) => json != " \n" && json != "\n")
-        .map((String json) => new Message.fromJson(JSON.decode(json)))
+        .map((String json) => new Message.fromJson(json.decode(json)))
         .asBroadcastStream();
 
     return _streamMapper[roomId];
@@ -243,7 +243,7 @@ class GroupApi {
 }
 
 dynamic _getResponseBody(http.Response response) {
-  final body = JSON.decode(response.body);
+  final body = json.decode(response.body);
   if (response != null &&
       response.statusCode >= 200 &&
       response.statusCode < 300) {
