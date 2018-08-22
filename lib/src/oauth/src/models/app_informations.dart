@@ -4,6 +4,7 @@ class AppInformations {
   final String appId;
   final String appSecret;
   final String redirectUri;
-
-  AppInformations(this.appId, this.appSecret, this.redirectUri);
+  final String tokenUrl;
+  
+  AppInformations(this.appId, this.appSecret, this.redirectUri, this.tokenUrl);
 }
