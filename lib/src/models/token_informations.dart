@@ -5,7 +5,7 @@ import 'package:gitter/src/oauth/oauth.dart';
 class GitterTokenInformations extends TokenInformations {
   GitterTokenInformations(AppInformations appInformations, String code)
       : super(
-            "https://gitter.im/login/oauth/token",
+            appInformations.tokenUrl,
             {
               "client_id": appInformations.appId,
               "client_secret": appInformations.appSecret,
